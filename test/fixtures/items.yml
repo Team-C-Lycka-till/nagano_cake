@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genre_id: 
+  name: MyString
+  introduction: MyText
+  price: 1
+  is_active: false
+  default: MyString
+  'true': MyString
+  created_at: 
+  precision: MyString
+  6: MyString
+  updated_at: 
+  precision: MyString
+  6: MyString
+
+two:
+  genre_id: 
+  name: MyString
+  introduction: MyText
+  price: 1
+  is_active: false
+  default: MyString
+  'true': MyString
+  created_at: 
+  precision: MyString
+  6: MyString
+  updated_at: 
+  precision: MyString
+  6: MyString

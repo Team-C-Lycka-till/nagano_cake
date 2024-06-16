@@ -1,0 +1,51 @@
+<!--管理者ログイン時のヘッダー-->
+<h1>LOGO</h1>
+<% if admin_signed_in? %>
+      <li>
+        <%= link_to "商品一覧" %><!--items作成次第リンク作成する-->
+      </li>
+
+       <li>
+        <%= link_to "会員一覧" %><!--cutomers作成次第リンク作成する-->
+      </li>
+
+      <li>
+        <%= link_to "注文履歴一覧" %><!--orders作成次第リンク作成する-->
+      </li>
+
+       <li>
+        <%= link_to "ジャンル一覧" %><!--genres作成次第リンク作成する-->
+        <li>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+      </li>
+<!--顧客ログイン時のヘッダー-->
+<% elsif customer_signed_in? %>
+      <li>
+        <%= link_to "マイページ", my_page_path %>
+      </li>
+            <li>
+        <%= link_to "商品一覧" %><!--items作成次第リンク作成する-->
+      </li>
+            <li>
+        <%= link_to "カート" %><!--item_carts作成次第リンク作成する-->
+      </li>
+      <li>
+        <%= link_to "ログアウト",destroy_admin_session_path, method: :delete %>
+      </li>
+    <% else %>
+<!--未ログイン時のヘッダー-->
+      <li>
+        <%= link_to "About", about_path %>
+      </li>
+      <li>
+        <%= link_to "商品一覧"  %><!--閲覧モード機能実装次第リンク作成する-->
+      </li>
+      <li>
+        <%= link_to "新規登録", new_customer_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_customer_session_path %>
+      </li>
+    <% end %>
+  </header>

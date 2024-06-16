@@ -1,0 +1,2 @@
+class OrderDatil < ApplicationRecord
+end
