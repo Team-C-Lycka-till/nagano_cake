@@ -1,10 +1,8 @@
 <!--管理者ログイン時のヘッダー-->
 <h1>LOGO</h1>
 <% if admin_signed_in? %>
-      <li>
-        <%= link_to "商品一覧" %><!--items作成次第リンク作成する-->
-      </li>
-
+      <li class="nav-item"><%= link_to "商品一覧", items_path, class: "btn btn-outline-warning text-dark"  %></li>
+      
        <li>
         <%= link_to "会員一覧" %><!--cutomers作成次第リンク作成する-->
       </li>
