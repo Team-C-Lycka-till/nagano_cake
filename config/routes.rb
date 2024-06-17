@@ -61,6 +61,12 @@ Rails.application.routes.draw do
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
       namespace :admin do
     root to: 'homes#top'
+    
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  #寺田↓
+  resources :addresses, only: [:index, :create, :edit, :update, :destroy], controller: 'public/addresses'
 end
+  #寺田↑
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
