@@ -1,16 +1,28 @@
-<h3>商品一覧</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+    <h4>
+      <span class=" p-2" style="background-color: #eee;">商品一覧</span>
+    </h4>
+     </div>
+    <div class="col-sm-2 px-sm-0 text-right mb-2">
+      <%= link_to new_admin_item_path, class:"btn btn--circle btn--circle-c btn--shadow" do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </div>
 
-  <table>
+  <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+  <table class="table table-borderless">
     <thead>
-     <tr>
+     <tr class="table-secondary">
       <th>商品ID</th>
       <th>商品名</th>
       <th>税抜価格</th>
-   <!--   <th>ジャンル</th>-->
+      <th>ジャンル</th>
       <th>ステータス</th>
       </tr>
       </thead>
-<%= @items.each do |item| %>
+<% @items.each do |item| %>
     <tbody>
      <tr>
       <td><%= item.id %></td>
@@ -18,9 +30,9 @@
         <u><%= item.name %></u>
          </td>
           <% end %>
-      <td><%= item.introduction %></td>
-      <td><%= item.price %></td>
-      <td><% if item.sales_status == true %>
+      <td>¥<%= item.price.to_s(:delimited) %></td>
+      <td><%= item.genre.name %></td>
+      <td><% if item.is_active == true %>
        <p class="text-success font-weight-bold">販売中</p>
         <% else %>
        <p class="text-secondary font-weight-bold">販売停止中</p>
@@ -30,3 +42,6 @@
     </tbody>
     <% end %>
   </table>
+  </div>
+  </div>
+  </div>

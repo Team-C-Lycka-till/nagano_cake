@@ -61,9 +61,10 @@ Rails.application.routes.draw do
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
       namespace :admin do
     root to: 'homes#top'
-    get 'items/new'
-    post 'items' => 'items#create'
-    get 'items' => 'items#index'
+    #梅地 管理者itemとgenreのroute追記部分
+    resources :items,only: [:new, :create, :index, :show,  :edit, :update]
+    resources :genres, only: [:create, :index,  :edit, :update]
+    #梅地 管理者itemとgenreのroute追記部分ここまで
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
