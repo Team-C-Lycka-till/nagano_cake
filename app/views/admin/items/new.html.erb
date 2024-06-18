@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
-    <h4>
+    <h5>
       <span class=" p-2" style="background-color: #eee;">商品新規登録</span>
-    </h4>
+    </h5>
     </div>
   </div>
-    <div class="row">
-    <div class="col-sm-12 px-sm-0 mx-auto mb-5">
+    <div class="row col-md-auto">
+    <div class="col-sm-12 px-sm-0 mb-5">
  <%= form_with model: @item, url:"/admin/items" do |f| %>
-  <table class="table table-borderless">
+  <table class="table table-borderless col-8">
 
    <tr>
     <div class="form-group">
@@ -43,8 +43,8 @@
      <%= f.label :is_active, "販売停止中" %></td></th></tr>
 
   <tr><th><%= f.submit "新規登録", class:"btn btn-success" %></td></th></tr>
- <% end %>
-</table>
+       </table>
+      <% end %>
     </div>
   </div>
- </div>
+</div>

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
-    <h4>
+    <h5>
       <span class=" p-2" style="background-color: #eee;">ジャンル一覧・追加</span>
-    </h4>
+    </h5>
     </div>
   </div>
       <div class="row">
-      <div class="col">
+      <div class="col-sm-10 px-sm-0 mt-3 ">
        <!--ジャンル新規登録のフォーム-->
 <%= form_with model: @genre, url: "/admin/genres", method: :post, local: true do |f| %>
   <%= f.label :name, "ジャンル名" %>
@@ -19,7 +19,7 @@
     
       <!--ジャンル一覧-->
           <div class="row">
-      <div class="col-lg-5 mt-3">
+      <div class="col-lg-4 mt-3 text-center mb-5">
 
 <table class="table table-bordered">
  <thead class="table-secondary">
