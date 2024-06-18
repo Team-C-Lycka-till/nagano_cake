@@ -1,9 +1,15 @@
 <div class="container">
+  <div class ="row">
+    <h5 class="my-5">
+      <span class ="p-2" style="background-color: #eee;">
+        <%= @customer.full_name %>さんの会員情報編集
+      </span>
+    </h5>
+  </div>
   <div class="row">
     <div class="col">
-      <h4 class="my-5"><%= @customer.full_name %>さんの会員情報編集</h4>
+      <%= form_with model: [:admin, @customer] do |f| %>
       <table class="table table-borderless">
-        <%= form_with model: [:admin, @customer] do |f| %>
         <tr>
           <td>会員ID</td>
           <td><%= @customer.id %></td>
@@ -45,7 +51,7 @@
 
         <tr>
           <td>会員ステータス</td>
-          <td>
+          <td >
             <%= f.radio_button :is_active, :true %>
             <%= f.label :is_active, "有効" %>
 
@@ -58,8 +64,8 @@
           <td></td>
           <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
         </tr>
-        <% end %>
       </table>
+      <% end %>
     </div>
   </div>
 </div>
