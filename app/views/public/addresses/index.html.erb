@@ -1,59 +1,79 @@
 <!-- 寺田 -->
-<h1>配送先一覧</h1>
-
-<%= form_with(model: @address, local: true) do |form| %>
-  <% if @address.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
-      <ul>
-        <% @address.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h5 class="my-4">
+        <span class="p-2 offset-1" style="background-color: #eee;">配送先登録 / 一覧</span>
+      </h5>
+      <%= form_with(model: @address, local: true, ) do |form| %>
+        <% if @address.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= pluralize(@address.errors.count, "error") %> が発生しました:</h2>
+            <ul>
+              <% @address.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+        
+        <div class="form-group row">
+          <!-- <label for="postal_code" class="mr-2">郵便番号(ハイフンなし)</label> -->
+          <%= form.label:postal_code,"郵便番号(ハイフンなし)",class: 'col-3 col-form-label'%>
+          <div class='col-5'>
+          <%= form.text_field :postal_code, class: 'form-control', placeholder: '0000000' %>
+          </div>
+        </div>
+        <div class="form-group row">
+        <!--<div class="field">-->
+          <%= form.label:address,"住所",class: 'col-3 col-form-label'%>
+          <!--<label for="address" class="mr-2">住所</label>-->
+          <div class='col-6'>
+          <%= form.text_area :address, class: 'form-control', placeholder: '東京都渋谷区代々木神園町0-0', rows: 1 %>
+          </div>
+        </div>
+        <div class="form-group row">
+        <!--<div class="field">-->
+          <!--<label for="name" class="mr-2">宛名</label>-->
+          <%= form.label:name,"宛名",class: 'col-3 col-form-label'%>
+          <div class='col-5'>
+          <%= form.text_field :name, class: 'form-control', placeholder: '令和道子' %>
+          </div>
+        
+        <!--<div class="field">-->
+        <div class='col-3 offset-1'> 
+          <%= form.submit '新規登録', class: 'btn btn-success' %>
+        </div>  
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name, '氏名' %>
-    <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :postal_code, '郵便番号' %>
-    <%= form.text_field :postal_code %>
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="p-2" style="background-color: #eee;">
+            <th style="border-color: black;">郵便番号</th>
+            <th style="border-color: black;">住所</th>
+            <th style="border-color: black;">宛名</th>
+            <th style="border-color: black;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @addresses.each do |address| %>
+          <tr>
+          <td style="border-color: black;"><%= address.postal_code %></td>
+          <td style="border-color: black;"><%= address.address %></td>
+          <td style="border-color: black;"><%= address.name %></td>
+          <td style="border-color: black;">
+            <%= link_to '編集する', edit_address_path(address), class: "btn btn-success btn-sm" %>
+            <%= link_to '削除する', address, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :address, '住所' %>
-    <%= form.text_area :address %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit '新規登録' %>
-  </div>
-<% end %>
-
-<h2>登録済み配送先</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>氏名</th>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th colspan="2">操作</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.name %></td>
-        <td><%= address.postal_code %></td>
-        <td><%= address.address %></td>
-        <td><%= link_to '編集', edit_address_path(address) %></td>
-        <td><%= link_to '削除', address_path(address), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
