@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2024_06_15_120237) do
     t.integer "item_id"
     t.integer "price"
     t.integer "amount"
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -120,6 +121,8 @@ ActiveRecord::Schema.define(version: 2024_06_15_120237) do
     t.string "name"
     t.integer "shipping_cost"
     t.integer "total_payment"
+    t.integer "payment_method", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

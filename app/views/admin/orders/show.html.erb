@@ -1,2 +1,116 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class ="container">
+
+  <div class ="row">
+    <h5 class="my-5">
+      <span class ="p-2" style="background-color: #eee;">
+        注文履歴詳細
+      </span>
+    </h5>
+  </div>
+
+  <div class ="row">
+     <div class="col-12">
+      <%# @order_datils.each do |order_datil| %>
+        <table class="table table-borderless">
+          <tr>
+            <td>購入者</td>
+            <td><%= @order.name %></td>
+          </tr>
+
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at %></td>
+          </tr>
+
+          <tr>
+            <td>配送先</td>
+            <td>
+              <%= @order.postal_code %><%= @order.address %><br>
+              <%= @order.name%>
+            </td>
+          </tr>
+
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment_method %></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>注文ステータス</td>
+            <td><%= @order.status %></td>
+            <td></td>
+          </tr>
+
+        </table>
+      <%# end %>
+    </div>
+     </div>
+
+    <div class ="row">
+      <div class ="col-9">
+        <table class="table table-border pt-8">
+          <thead>
+            <tr class ="p-2" style="background-color: #eee;">
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>製作ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_details.each do |order_detail| %>
+              <tr>
+                <td>
+                  <%#商品の名前 %>
+                  <%= link_to order_detail.item.name %>
+                </td>
+                <td>
+                  <%# 単価(税込) %>
+                  <%= order_detail.price %>円
+                </td>
+                <td>
+                  <%# 数量 %>
+                  <%= order_detail.amount %>
+                </td>
+                <td>
+                  <%# 小計 %>
+
+                </td>
+                <%#= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
+                  <td>
+                    <%# 製作ステータス %>
+                    <%#= order_detail.making_status%>
+                  </td>
+                  <td>
+                    <%#= f.select :status,Order.statuses %>
+                    <%#= f.submit "更新", class: "btn btn-success" %>
+                <%# end %>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class ="col-3">
+        <table>
+          <tr>
+            <td>商品合計</td>
+            <td><%= %>円</td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td><%=  %>円</td>
+          </tr>
+          <tr>
+            <td>購入者</td>
+            <td><%= %>円</td>
+          </tr>
+        </table>
+      </div>
+
+
+  </div>
+</div>

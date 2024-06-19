@@ -62,6 +62,8 @@ Rails.application.routes.draw do
       namespace :admin do
         root to: 'homes#top'
         resources :customers, only: [:index, :show, :edit, :update] #町田この１行のみ追記
+        resources :orders, only: [:show, :update]
+        resources :order_details, only: [:update]
       end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
