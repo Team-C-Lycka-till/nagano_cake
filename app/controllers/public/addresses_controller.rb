@@ -27,7 +27,9 @@
       if @address.update(address_params)
         redirect_to addresses_path, notice: '配送先が更新されました。'
       else
-        render :edit
+        @addresses = current_customer.addresses
+        @address = Address.new
+        render :index
       end
     end
 
