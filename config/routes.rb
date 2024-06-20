@@ -64,11 +64,20 @@ Rails.application.routes.draw do
     patch  "/customers/withdraw" => "public/customers#withdraw"
     #梅地 退会機能route追記部分ここまで
       namespace :admin do
+#<<<<<<< HEAD
     root to: 'homes#top'
     #梅地 管理者itemとgenreのroute追記部分
     resources :items,only: [:new, :create, :index, :show,  :edit, :update]
     resources :genres, only: [:create, :index,  :edit, :update]
     #梅地 管理者itemとgenreのroute追記部分ここまで
   end
+#=======
+        #root to: 'homes#top'
+        resources :customers, only: [:index, :show, :edit, :update] #町田↓
+        resources :orders, only: [:show, :update]
+        resources :order_details, only: [:update]#町田↑
+      #end
+#>>>>>>> origin/develop
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
