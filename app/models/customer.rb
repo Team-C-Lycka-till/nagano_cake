@@ -17,8 +17,16 @@ class Customer < ApplicationRecord
   validates :telephone_number, presence: true
   validates :email, uniqueness: true
   
-  def active_for_authentication?
-  super && (is_active == false)
+  def full_name
+    last_name + '' + first_name
   end
-         
+
+  def full_name_kana
+    last_name_kana + '' + first_name_kana
+  end
+#なぜか下記の記述を入れるとログイン前に戻される
+  #def active_for_authentication?
+    #super && (is_active == false)
+  #end
+
 end
