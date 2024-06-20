@@ -28,8 +28,9 @@
         redirect_to addresses_path, notice: '配送先が更新されました。'
       else
         @addresses = current_customer.addresses
-        @address = Address.new
-        render :index
+        # @address =Address.find(params[:id])
+        # puts @address.errors.full_messages
+        render :edit
       end
     end
 

@@ -7,22 +7,22 @@
           </h5>
 
         <%= form_with(model: @address, local: true, class: "form") do |form| %>
-          <!--<%# if @address.errors.any? %>-->
-          <!--  <div id="error_explanation" class="alert alert-danger">-->
-          <!--    <h2><%#= pluralize(@address.errors.count, "error") %> が発生しました:</h2>-->
-          <!--    <ul>-->
-          <!--      <%# @address.errors.full_messages.each do |message| %>-->
-          <!--        <li><%#= message %></li>-->
-          <!--      <%# end %>-->
-          <!--    </ul>-->
-          <!--  </div>-->
-          <!--<%# end %>-->
+          <% if @address.errors.any? %>
+            <div id="error_explanation" class="alert alert-danger">
+              <h2><%= pluralize(@address.errors.count, "error") %> が発生しました:</h2>
+              <ul>
+                <% @address.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           
           <div class="form-group row">
            <label for="postal_code" class="col-3 mr-2">郵便番号(ハイフンなし)</label> 
           <%#= form.label:postal_code,"郵便番号(ハイフンなし)",class: 'col-3 col-form-label'%>
           <div class='col-3'>
-          <%= form.text_field :postal_code, class: 'form-control',required: true%>
+          <%= form.text_field :postal_code, class: 'form-control'%>
           </div>
         </div>
         <div class="form-group row">
@@ -30,7 +30,7 @@
           <%#= form.label:address,"住所",class: 'col-3 col-form-label'%>
           <label for="address" class="col-3 mr-2">住所</label>
           <div class='col-5'>
-          <%= form.text_area :address, class: 'form-control', rows: 1,required: true %>
+          <%= form.text_area :address, class: 'form-control', rows: 1%>
           </div>
         </div>
         <div class="form-group row">
@@ -38,7 +38,7 @@
           <label for="name" class="col-3 mr-2">宛名</label>
           <%#= form.label:name,"宛名",class: 'col-3 col-form-label'%>
           <div class='col-3'>
-          <%= form.text_field :name, class: 'form-control',required: true%>
+          <%= form.text_field :name, class: 'form-control'%>
           </div>
         
           <div class='col-3 offset-2'>
