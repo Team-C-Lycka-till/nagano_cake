@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     get '/customers/information/edit' => 'public/customers#edit', as: 'information/edit'
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
     #梅地 顧客退会機能のroute追記部分
-    get  '/customers/unsubcribe' => 'public/customers#unsubcribe'
+    get "/customers/unsubscribe" => "public/customers#unsubscribe"
     patch  '/customers/withdraw' => 'public/customers#withdraw'
     #梅地 退会機能route追記部分ここまで
       namespace :admin do
