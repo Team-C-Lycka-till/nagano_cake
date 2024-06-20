@@ -8,6 +8,8 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       redirect_to admin_genres_path, notice: "You have created genre successfully."
     else
+      flash.now[:notice] = "create genre error"
+      @genres = Genre.all
       render :index
     end
 
@@ -18,9 +20,13 @@ class Admin::GenresController < ApplicationController
   end
   
   def update
-    genre = Genre.find(params[:id])
-    genre.update(genre_params)
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
     redirect_to admin_genres_path, notice: "You have updated genre successfully."
+    else
+    flash.now[:notice] = "update genre error" 
+    render :edit
+    end
   end
     private
   # ストロングパラメータ

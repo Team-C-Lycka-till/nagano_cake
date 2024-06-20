@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     get '/customers/my_page' => 'public/customers#show', as: 'my_page'
     get '/customers/information/edit' => 'public/customers#edit', as: 'information/edit'
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
+    
       namespace :admin do
     root to: 'homes#top'
     #梅地 管理者itemとgenreのroute追記部分
