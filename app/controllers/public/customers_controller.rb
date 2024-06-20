@@ -15,18 +15,18 @@ class Public::CustomersController < ApplicationController
     else
       render :edit
     end
-    
+    end
+
   def unsubscribe
   end
-  
+
   def withdraw
-    @customer = Customer.find(current_customer.id)
-    # is_activeカラムをfalse に変更することにより削除フラグを立てる
-    @customer.update(is_active :false)
-    reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to root_path
+    @customer = current_customer
+    @customer.is_active = false
+    if @customer.save
+      reset_session
+      flash[:notice] = "退会処理を実行いたしました"
+      redirect_to root_path
+    end
   end
-  
  end
-end

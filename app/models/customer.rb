@@ -24,9 +24,10 @@ class Customer < ApplicationRecord
   def full_name_kana
     last_name_kana + '' + first_name_kana
   end
-#なぜか下記の記述を入れるとログイン前に戻される
-  #def active_for_authentication?
-    #super && (is_active == false)
-  #end
+#is_active == falseを入れるとログイン前に戻される⇒falseにするとログインに戻されるので
+#trueでバリテーションがかからない状態になる
+  def active_for_authentication?
+    super && (is_active == true)
+  end
 
 end

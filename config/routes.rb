@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
     #梅地 顧客退会機能のroute追記部分
     get "/customers/unsubscribe" => "public/customers#unsubscribe"
-    patch  '/customers/withdraw' => 'public/customers#withdraw'
+    patch  "/customers/withdraw" => "public/customers#withdraw"
     #梅地 退会機能route追記部分ここまで
       namespace :admin do
     root to: 'homes#top'
