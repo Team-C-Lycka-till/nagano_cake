@@ -20,12 +20,13 @@
           <tbody>
             <% @orders.each do |order| %>
               <tr>
-                <td><%= order.created_at %></td>
-                <td><%= order.name%></td>
+                <td><%= order.set_date %></td>
+                <td><%= order.name %></td>
                 <td>
                   <%#= 数量 %>
+                  <%= order.total_item_tax.to_s(:delimited) %>
                 </td>
-                <td><%= order.status %></td>
+                <td><%#= 注文ステータス %></td>
               </tr>
             <% end %>
           </tbody>

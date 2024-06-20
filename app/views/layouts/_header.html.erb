@@ -2,100 +2,109 @@
   <nav class = "navbar navbar-expand-lg" style="background-color: #fffacd; color:black;">
     <div class ="container">
 
-      <%# h1> <!--Link必要ない場合のロゴ画像ー-->
-        <a class="navbar-brand" href="/">LOGO</a>
-      </h1>
-      <ul class="navbar-nav ml-auto" #%>
         <% if admin_signed_in? %><!--管理者ログイン時のヘッダー-->
 
           <h1><!--topへLinkする必要ある場合、ロゴ画像挿入するー-->
-            <a class="navbar-brand" href="/" style="color:black;">LOGO</a>
+            <%= link_to admin_root_path do %>
+              LOGO
+            <% end %>
           </h1>
-          <ul class="navbar-nav ml-auto">
-            <li class ="p-2 btn btn-outline-secondary">
-              <%= link_to "商品一覧" %><!--items作成次第リンク作成する-->
-            </li>
-             <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "会員一覧" %><!--cutomers作成次第リンク作成する-->
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "注文履歴一覧" %><!--orders作成次第リンク作成する-->
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "ジャンル一覧" %><!--genres作成次第リンク作成する-->
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-            </li>
-          </ul>
-
-
+          <div class ="d-flex flex-column">
+            <ul class="navbar-nav ml-auto">
+              <li class ="p-2 btn btn-outline-secondary">
+                <%= link_to "商品一覧" %><!--items作成次第リンク作成する-->
+              </li>
+               <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "会員一覧" %><!--cutomers作成次第リンク作成する-->
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "注文履歴一覧" %><!--orders作成次第リンク作成する-->
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "ジャンル一覧" %><!--genres作成次第リンク作成する-->
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+              </li>
+            </ul>
 
             <form class="d-flex" role="search">
-              <input type="text" class="form-control" placeholder="U">
+              <input type="text" class="form-control" placeholder="Search">
 
-          		  <button type="button" class="btn btn-default">ボタン
-          		    <i class="fa-solid fa-magnifying-glass"></i>
+          		  <button type="button" class="btn btn-default">
+          		    <span class ="text-primary">
+          		      <i class="fa-solid fa-magnifying-glass"></i>
+          		    </span>
           		  </button>
-
           	</form>
-
-
+          </div>
 
         <% elsif customer_signed_in? %><!--顧客ログイン時のヘッダー-->
           <h1><!--topへLinkする必要ある場合、ロゴ画像挿入するー-->
-            <a class="navbar-brand" href="/">LOGO</a>
-          </h1>
-
-          <ul class="navbar-nav ml-auto">
-            <li class ="p-2 btn btn-outline-secondary">
-              <%= link_to "マイページ", my_page_path %>
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "商品一覧" %><!--items作成次第リンク作成する-->
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "カート" %><!--item_carts作成次第リンク作成する-->
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "ログアウト",destroy_admin_session_path, method: :delete %>
-            </li>
-          </ul>
-        <% else %><!--未ログイン時のヘッダー-->
-          <h1><!--topへLinkする必要ある場合、ロゴ画像挿入するー-->
-            <a class="navbar-brand" href="/">LOGO</a>
+            <%= link_to my_page_path do %>
+              LOGO
+            <% end %>
           </h1>
           <div class ="d-flex flex-column">
-          <ul class="navbar-nav ml-auto">
-            <li class ="p-2 btn btn-outline-secondary">
-              <%= link_to "About", about_path %>
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary ">
-              <%= link_to "商品一覧"  %><!--閲覧モード機能実装次第リンク作成する-->
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "新規登録", new_customer_registration_path %>
-            </li>
-            <li class ="p-2 ml-4 btn btn-outline-secondary">
-              <%= link_to "ログイン", new_customer_session_path, class:"text-dark" %>
-            </li>
-          </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class ="p-2 btn btn-outline-secondary">
+                <%= link_to "マイページ", my_page_path %>
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "商品一覧" %><!--items作成次第リンク作成する-->
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "カート" %><!--item_carts作成次第リンク作成する-->
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "ログアウト",destroy_admin_session_path, method: :delete %>
+              </li>
+            </ul>
 
+            <form class="d-flex" role="search">
+              <input type="text" class="form-control" placeholder="Search">
+
+          		  <button type="button" class="btn btn-default">
+          		    <span class ="text-primary">
+          		      <i class="fa-solid fa-magnifying-glass"></i>
+          		    </span>
+          		  </button>
+          	</form>
+          </div>
+        <% else %><!--未ログイン時のヘッダー-->
+          <h1><!--topへLinkする必要ある場合、ロゴ画像挿入するー-->
+            <%= link_to root_path do %>
+              LOGO
+            <% end %>
+          </h1>
+          <div class ="d-flex flex-column">
+            <ul class="navbar-nav ml-auto">
+              <li class ="p-2 btn btn-outline-secondary">
+                <%= link_to "About", about_path %>
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary ">
+                <%= link_to "商品一覧"  %><!--閲覧モード機能実装次第リンク作成する-->
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "新規登録", new_customer_registration_path %>
+              </li>
+              <li class ="p-2 ml-4 btn btn-outline-secondary">
+                <%= link_to "ログイン", new_customer_session_path, class:"text-dark" %>
+              </li>
+            </ul>
+
+            <form class="d-flex" role="search">
+              <input type="text" class="form-control" placeholder="Search">
+
+          		  <button type="button" class="btn btn-default">
+          		    <span class ="text-primary">
+          		      <i class="fa-solid fa-magnifying-glass"></i>
+          		    </span>
+          		  </button>
+          	</form>
+          </div>
         <% end %>
 
-          <form class="d-flex" role="search">
-            <input type="text" class="form-control" placeholder="Search">
-
-        		  <button type="button" class="btn btn-default">
-        		    <span class ="text-primary">
-        		      <i class="fa-solid fa-magnifying-glass"></i>
-        		    </span>
-        		  </button>
-        	</form>
-
-      	</div>
-
-      <%# /ul %>
     </div>
   </nav>
 </header>
