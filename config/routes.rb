@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     get '/customers/my_page' => 'public/customers#show', as: 'my_page'
     get '/customers/information/edit' => 'public/customers#edit', as: 'information/edit'
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
-    resources :addresses, only: [:index, :create, :edit, :update, :destroy], controller: 'public/addresses' 
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy], controller: 'public/addresses' #寺田
       namespace :admin do
 
         root to: 'homes#top'
@@ -71,6 +71,6 @@ Rails.application.routes.draw do
 
 
 end
-  #寺田↑
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
