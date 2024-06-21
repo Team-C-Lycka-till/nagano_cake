@@ -1,5 +1,8 @@
 class OrderDatil < ApplicationRecord
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/develop
   belongs_to :order
   belongs_to :item
 
@@ -14,6 +17,7 @@ class OrderDatil < ApplicationRecord
   def get_subtotal
     item.add_tax_price * amount
   end
+<<<<<<< HEAD
 =======
   #町田↓
   belongs_to :item
@@ -28,3 +32,5 @@ class OrderDatil < ApplicationRecord
   #町田↑
 >>>>>>> origin/develop
 end
+=======
+>>>>>>> origin/develop

@@ -1,5 +1,8 @@
 class Order < ApplicationRecord
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/develop
   belongs_to :customer
   has_many :order_details, dependent: :destroy
 
@@ -39,6 +42,7 @@ class Order < ApplicationRecord
   end
 
 end
+<<<<<<< HEAD
 =======
   #町田↓
     belongs_to :customer
@@ -61,4 +65,6 @@ end
 
   #町田↑
 end
+>>>>>>> origin/develop
+=======
 >>>>>>> origin/develop

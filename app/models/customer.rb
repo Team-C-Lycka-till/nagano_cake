@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :telephone_number, presence: true
   validates :email, uniqueness: true
-
+  
   def full_name
     last_name + '' + first_name
   end
@@ -24,9 +24,14 @@ class Customer < ApplicationRecord
   def full_name_kana
     last_name_kana + '' + first_name_kana
   end
-
+#is_active == falseを入れるとログイン前に戻される⇒falseにするとログインに戻されるので
+#trueでバリテーションがかからない状態になる
   def active_for_authentication?
+<<<<<<< HEAD
     super && (is_active == ture)
+=======
+    super && (is_active == true)
+>>>>>>> origin/develop
   end
 
 end
