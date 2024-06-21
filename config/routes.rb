@@ -59,10 +59,30 @@ Rails.application.routes.draw do
     get '/customers/my_page' => 'public/customers#show', as: 'my_page'
     get '/customers/information/edit' => 'public/customers#edit', as: 'information/edit'
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
-    resources :addresses, only: [:index, :create, :edit, :update, :destroy], controller: 'public/addresses' #寺田
-      namespace :admin do
 
-        root to: 'homes#top'
+
+    
+    scope module: :public do
+      resources :items, only: [:index, :show]
+      resources :cart_items, only: [:index, :update, :destroy, :create]
+      resources :orders, only: [:new, :create, :index, :show]
+      resources :addresses, only: [:index, :create, :edit, :update, :destroy], controller: 'public/addresses' #寺田
+    
+  
+ 
+
+    #梅地 顧客退会機能のroute追記部分
+    get "/customers/unsubscribe" => "public/customers#unsubscribe"
+    patch  "/customers/withdraw" => "public/customers#withdraw"
+    end
+    #梅地 退会機能route追記部分ここまで
+      namespace :admin do
+    root to: 'homes#top'
+    #梅地 管理者itemとgenreのroute追記部分
+    resources :items,only: [:new, :create, :index, :show,  :edit, :update]
+    resources :genres, only: [:create, :index,  :edit, :update]
+    #梅地 管理者itemとgenreのroute追記部分ここまで
+        #root to: 'homes#top'
         resources :customers, only: [:index, :show, :edit, :update] #町田↓
         resources :orders, only: [:show, :update]
         resources :order_details, only: [:update]#町田↑
