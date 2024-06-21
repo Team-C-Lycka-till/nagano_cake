@@ -60,12 +60,13 @@ Rails.application.routes.draw do
     get '/customers/information/edit' => 'public/customers#edit', as: 'information/edit'
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
 
+
     
     scope module: :public do
       resources :items, only: [:index, :show]
       resources :cart_items, only: [:index, :update, :destroy, :create]
       resources :orders, only: [:new, :create, :index, :show]
-      resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+      resources :addresses, only: [:index, :create, :edit, :update, :destroy], controller: 'public/addresses' #寺田
     
   
  
@@ -88,4 +89,8 @@ Rails.application.routes.draw do
       end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+
 end
+  
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
