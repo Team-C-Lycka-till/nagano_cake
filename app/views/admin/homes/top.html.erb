@@ -1,2 +1,36 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class ="container">
+  <div class ="row">
+    <h5 class="my-5">
+      <span class ="p-2" style="background-color: #eee;">
+        注文履歴一覧
+      </span>
+    </h5>
+  </div>
+  <div class ="row">
+    <div class = "col">
+      <table class ="table">
+        <thead>
+            <tr class ="p-2" style="background-color: #eee;">
+              <th>購入日時</th>
+              <th>購入者</th>
+              <th>注文個数</th>
+              <th>注文ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.set_date %></td>
+                <td><%= order.name %></td>
+                <td>
+                  <%#= 数量 %>
+                  <%= order.total_item_tax.to_s(:delimited) %>
+                </td>
+                <td><%#= 注文ステータス %></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
