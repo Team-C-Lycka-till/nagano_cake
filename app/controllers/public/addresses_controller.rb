@@ -1,5 +1,5 @@
 #寺田
-#module Public
+module Public
   class Public::AddressesController < ApplicationController
     before_action :authenticate_customer!
     before_action :set_address, only: [:edit, :update, :destroy]
@@ -49,4 +49,4 @@
       params.require(:address).permit(:name, :postal_code, :address)
     end
   end
-
+end

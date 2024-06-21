@@ -20,19 +20,6 @@ Customer.create!(
    telephone_number: '1'
 )
 
-Genre.create!(
-   name:'ケーキ'
-   )
-
-5.times do |i|
-     Item.create!(
-        genre_id: 1,
-        name: "ケーキ #{i}",
-        introduction: "ケーキ #{i}の説明文です",
-        price:  300
-        )
-end
-
 Order.create!(
    customer_id: 1,
    postal_code: '1',

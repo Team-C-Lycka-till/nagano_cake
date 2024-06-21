@@ -37,4 +37,5 @@ class Order < ApplicationRecord
     SHIPPING_COST
   end
 
+
 end

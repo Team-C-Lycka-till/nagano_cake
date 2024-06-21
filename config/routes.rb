@@ -61,19 +61,19 @@ Rails.application.routes.draw do
     patch '/customers/information/update' => 'public/customers#update', as: 'information'
 
 
-    
+
     scope module: :public do
       resources :items, only: [:index, :show]
       resources :cart_items, only: [:index, :update, :destroy, :create]
       resources :orders, only: [:new, :create, :index, :show]
-      resources :addresses, only: [:index, :create, :edit, :update, :destroy], controller: 'public/addresses' #寺田
-    
-  
- 
+      resources :addresses, only: [:index, :create, :edit, :update, :destroy] #寺田
+
+
+
 
     #梅地 顧客退会機能のroute追記部分
     get "/customers/unsubscribe" => "public/customers#unsubscribe"
-    patch  "/customers/withdraw" => "public/customers#withdraw"
+    patch  "/customers/withdraw" => "customers#withdraw"
     end
     #梅地 退会機能route追記部分ここまで
       namespace :admin do
@@ -91,6 +91,6 @@ Rails.application.routes.draw do
 
 
 end
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
