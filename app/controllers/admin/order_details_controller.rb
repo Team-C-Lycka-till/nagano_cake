@@ -2,12 +2,12 @@ class Admin::OrderDetailsController < ApplicationController
 
   def update
     @order_detail = OrderDatil.find(params[:id])
-    @order = @order_detail.order 
-    @order_details = @order.order_datils 
-    is_updated = true 
+    @order = @order_detail.order
+    @order_details = @order.order_datils
+    is_updated = true
     if @order_detail.update(order_detail_params)
-       @order.update(status: "製作中") if @order_detail.making_status == "製作中" 
-       @order_details.each do |order_detail| 
+       @order.update(status: "製作中") if @order_detail.making_status == "製作中"
+       @order_details.each do |order_detail|
         if order_detail.making_status != "製作完了"
           is_updated = false
         end
