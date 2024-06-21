@@ -27,11 +27,7 @@ class Customer < ApplicationRecord
 #is_active == falseを入れるとログイン前に戻される⇒falseにするとログインに戻されるので
 #trueでバリテーションがかからない状態になる
   def active_for_authentication?
-<<<<<<< HEAD
-    super && (is_active == ture)
-=======
     super && (is_active == true)
->>>>>>> origin/develop
   end
 
 end

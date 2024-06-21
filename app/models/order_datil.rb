@@ -1,8 +1,4 @@
 class OrderDatil < ApplicationRecord
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/develop
   belongs_to :order
   belongs_to :item
 
@@ -17,20 +13,3 @@ class OrderDatil < ApplicationRecord
   def get_subtotal
     item.add_tax_price * amount
   end
-<<<<<<< HEAD
-=======
-  #町田↓
-  belongs_to :item
-  belongs_to :order
-
-  enum making_status: {"製作不可":0,"製作待ち":1,"製作中":2,"製作完了":3}
-
-  def total_item #税込価格
-    price * amount
-  end
-
-  #町田↑
->>>>>>> origin/develop
-end
-=======
->>>>>>> origin/develop
