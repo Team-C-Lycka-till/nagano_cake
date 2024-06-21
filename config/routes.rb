@@ -66,7 +66,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show]
       resources :cart_items, only: [:index, :update, :destroy, :create]
       resources :orders, only: [:new, :create, :index, :show]
-      resources :addresses, only: [:index, :create, :edit, :update, :destroy], controller: 'public/addresses' #寺田
+      resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     
   
  
