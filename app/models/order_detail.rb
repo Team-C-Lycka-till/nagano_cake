@@ -1,4 +1,4 @@
-class OrderDatil < ApplicationRecord
+class OrderDetail < ApplicationRecord
   belongs_to :order
   belongs_to :item
 
@@ -13,3 +13,4 @@ class OrderDatil < ApplicationRecord
   def get_subtotal
     item.add_tax_price * amount
   end
+end

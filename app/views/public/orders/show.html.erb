@@ -15,7 +15,7 @@
           <tr>
             <th class='table-secondary'>配送先</th>
             <td>
-              〒<%= @order.post_code.insert(3,'-') %></br>
+              〒<%= @order.postal_code.insert(3,'-') %></br>
               <%= @order.address %></br>
               <%= @order.name %>
             </td>
