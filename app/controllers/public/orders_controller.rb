@@ -5,13 +5,13 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @addresses = current_customer.addresses.all
   end
-  
+
   def confirm #注文情報入力確認画面
     @order = Order.new(order_params)
     @total = 0
 
     if params[:order][:address_option] == '0'
-      @order.post_code = current_customer.post_code
+      @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
 
@@ -22,18 +22,18 @@ class Public::OrdersController < ApplicationController
         render :new
       else
         selected = Address.find(params[:order][:address_id])
-        @order.post_code = selected.post_code
+        @order.postal_code = selected.postal_code
         @order.address = selected.address
         @order.name = selected.name
       end
 
     elsif params[:order][:address_option] == '2'
-      if params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+      if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
         @addresses = current_customer.addresses
         flash.now[:alert] = '住所を入力してください。'
         render :new
       else
-        @order.post_code = params[:order][:post_code]
+        @order.postal_code = params[:order][:postal_code]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
       end
@@ -85,7 +85,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :name, :address, :post_code, :shipping_cost, :total_payment, :status,:customer_id)
+    params.require(:order).permit(:payment_method, :name, :address, :postal_code, :shipping_cost, :total_payment, :status,:customer_id)
   end
 
 end

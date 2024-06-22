@@ -9,7 +9,7 @@
       <div class="col-2 offset-md-1"><%= f.label "お名前" %></div>
       <div class="col-1 text-right pr-0"><%= f.label "(姓)" %></div>
       <div class="col-2"><%= f.text_field :last_name, :size => "10" %></div>
-      <div class="col-1 text-right pr-0"><%= f.label "(名)" %></div>
+      <%= link_to "編集する", edit_customer_path, class:"btn btn-success px-4 mb-2" %>
       <div class="col-3"><%= f.text_field :first_name, :size => "10" %></div>
     </div>
     <div class="row">
@@ -44,6 +44,6 @@
     </div>
   <% end %>
         <div class="col-rg-6 px-sm-0 offset-sm-1">
-        <%= link_to "退会する",customers_unsubscribe_path, class:"btn btn-danger my-4" %>
+        <%= link_to "退会する",unsubscribe_path(@customer.id), class:"btn btn-danger my-3" %>
  　</div>
   </div>
