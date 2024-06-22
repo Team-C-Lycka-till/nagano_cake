@@ -5,13 +5,13 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @addresses = current_customer.addresses.all
   end
-  
+
   def confirm #注文情報入力確認画面
     @order = Order.new(order_params)
     @total = 0
 
     if params[:order][:address_option] == '0'
-      @order.post_code = current_customer.post_code
+      @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
 
@@ -85,7 +85,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :name, :address, :post_code, :shipping_cost, :total_payment, :status,:customer_id)
+    params.require(:order).permit(:payment_method, :name, :address, :postal_code, :shipping_cost, :total_payment, :status,:customer_id)
   end
 
 end

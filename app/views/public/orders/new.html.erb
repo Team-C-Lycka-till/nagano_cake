@@ -20,7 +20,7 @@
         <%= f.radio_button :address_option, 0, checked: "checked" %>
         <%= f.label :address_option, "ご自身の住所",{value: 0} %>
         <br>
-        〒<%= current_customer.post_code.insert(3, '-') %>
+        〒<%= current_customer.postal_code.insert(3, '-') %>
           <%= current_customer.address %><br>
           <%= current_customer.last_name %>
           <%= current_customer.first_name %>

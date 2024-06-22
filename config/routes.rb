@@ -57,10 +57,12 @@ Rails.application.routes.draw do
     get '/about' => 'public/homes#about', as: 'about'
 
     get '/customers/my_page' => 'public/customers#show', as: 'my_page'
-    get '/customers/information/edit' => 'public/customers#edit', as: 'information/edit'
-    patch '/customers/information/update' => 'public/customers#update', as: 'information'
-
-
+    get '/customers/information/edit' => 'public/customers#edit', as: 'edit_customer'
+    patch '/customers/information/update' => 'public/customers#update', as: 'customer'
+    delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
+    post '/orders/confirm' => 'public/orders#confirm', as: 'confirm'
+    get '/orders/thanks' => 'public/orders#thanks', as: 'thanks'
+    get '/search' => 'public/items#search', as: 'search'
     
     scope module: :public do
       resources :items, only: [:index, :show]
@@ -72,8 +74,8 @@ Rails.application.routes.draw do
  
 
     #梅地 顧客退会機能のroute追記部分
-    get "/customers/unsubscribe" => "public/customers#unsubscribe"
-    patch  "/customers/withdraw" => "public/customers#withdraw"
+    get "/customers/unsubscribe" => "customers#unsubscribe", as: 'unsubscribe'
+    patch  "/customers/withdraw" => "customers#withdraw", as: 'withdraw'
     end
     #梅地 退会機能route追記部分ここまで
       namespace :admin do
