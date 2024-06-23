@@ -40,13 +40,11 @@
           <td><%= @customer.email %></td>
         </tr>
       </table>
+      <div style="margin-bottom :10px;"><strong style="margin-right :25px;">発送先</strong><%= link_to '一覧を見る', addresses_path, class: 'btn btn-primary' %></div>
+      <div><storong style="margin-right :10px; font-weight: bold;">注文履歴</storong><%= link_to '一覧を見る', orders_path, class: 'btn btn-primary' %></div>
     </div>
   </div>
- <div class="row">
-  <div class="col-sm-2 mt-2 px-sm-0 offset-sm-1">
-    <h4>配送先</h4>
-  </div>
-  <div class="mt-2">
-    <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary px-5" %>
-  </div>
+
+
+
 </div>

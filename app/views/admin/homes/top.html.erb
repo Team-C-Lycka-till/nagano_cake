@@ -20,13 +20,18 @@
           <tbody>
             <% @orders.each do |order| %>
               <tr>
-                <td><%= order.set_date %></td>
+                <td>
+                  <%= link_to admin_order_path(order) do %>
+                  <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+                <% end %>
+                </td>
+                
                 <td><%= order.name %></td>
                 <td>
                   <%#= 数量 %>
-                  <%= order.total_item_tax.to_s(:delimited) %>
+                  <%= order.get_total_amount %>
                 </td>
-                <td><%#= 注文ステータス %></td>
+                <td><%#= 注文ステータス %><%= order.status_i18n %></td>
               </tr>
             <% end %>
           </tbody>

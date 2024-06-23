@@ -16,8 +16,15 @@
 
 
  <body>
- <%= render 'layouts/header' %>
+  <!--ヘッダー部分-->
+  <div><%= render 'layouts/header' %></div>
 
-    <%= yield %>
+  <!--ボディ部分-->
+  <p class='text-success'><%= flash[:notice] %></p>
+  <p class='text-danger'><%= flash[:alert] %></p>
+  <%= yield %>
+
+  <!--フッター部分-->
+  <%= render "layouts/footer" %>
   </body>
 </html>

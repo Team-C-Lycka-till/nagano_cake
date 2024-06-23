@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+nav li {
+ margin-right: 30px; 
+}
+
+.link {
+    text-decoration: none;
+    color: #000 ; 
+}
+
+.bg-img{
+  background-image: url('app/assets/imagesfruits.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  height: 400px;
+  width: 100%;
+}
+
+.item_name{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
