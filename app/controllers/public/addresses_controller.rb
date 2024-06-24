@@ -10,8 +10,7 @@
     end
 
     def create
-      @address = Address.new(address_params)
-      @address.customer_id = current_customer.id
+      @address = current_customer.addresses.new(address_params)
       if @address.save
         redirect_to addresses_path, notice: '配送先が登録されました。'
       else
@@ -21,13 +20,14 @@
     end
 
     def edit
+      @address = Address.find(params[:id])
     end
 
     def update
+      @address = Address.find(params[:id])
       if @address.update(address_params)
         redirect_to addresses_path, notice: '配送先が更新されました。'
       else
-        @addresses = current_customer.addresses
         # @address =Address.find(params[:id])
         # puts @address.errors.full_messages
         render :edit
@@ -35,16 +35,12 @@
     end
 
     def destroy
-      @address.destroy
+      Address.find(params[:id]).destroy
       redirect_to addresses_path, notice: '配送先が削除されました。'
     end
-
+    
     private
-
-    def set_address
-      @address = Address.find(params[:id])
-    end
-
+    
     def address_params
       params.require(:address).permit(:name, :postal_code, :address)
     end

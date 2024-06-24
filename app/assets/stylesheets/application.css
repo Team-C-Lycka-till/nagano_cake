@@ -14,16 +14,16 @@
  *= require_self
  */
 nav li {
- margin-right: 30px; 
+ margin-right: 10px; 
 }
 
 .link {
     text-decoration: none;
-    color: #000 ; 
+    color: #FFB3CB; 
 }
 
 .bg-img{
-  background-image: url('app/assets/imagesfruits.jpg');
+  background-image: url('fruits.jpg');
   background-size: cover;
   background-position: center;
   border-radius: 20px;
