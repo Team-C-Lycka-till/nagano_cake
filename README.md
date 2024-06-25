@@ -5,7 +5,8 @@ nagano_cake
 nagano_cakeという製菓店のための全国発送可能なECサイトです。
 このサイトでは、管理者と顧客の両方の視点から利用できる機能を備えています。
 以下の動画で、各機能の動作をご確認いただけます。
-(動画)
+[動画リンク](https://drive.google.com/file/d/1K2ASRpCIy2HF15S1WfYsSLS3ht0KHehi/view?usp=drive_link
+)
 
 ## 設計書
 ### ER図
