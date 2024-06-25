@@ -34,5 +34,3 @@ nav li {
 .item_name{
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
-}
