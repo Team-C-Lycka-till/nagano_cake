@@ -1,7 +1,10 @@
-<h2>ログイン</h2>
-
+<h2 class="row justify-content-first">
+  <div class="col-sm-2 px-sm-0 offset-sm-1">
+    ログイン
+  </div>
+</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-sm-2 px-sm-0 offset-sm-1">
         <%= f.label "メールアドレス" %>
       </div>
@@ -9,7 +12,7 @@
         <%= f.email_field :email, autofocus: true %>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-sm-2 px-sm-0 offset-sm-1">
         <%= f.label "パスワード" %>
       </div>
@@ -17,7 +20,7 @@
         <%= f.password_field :password %>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-sm-2 px-sm-0 offset-sm-1">
         <%= f.submit "ログイン", class:"btn btn-primary px-4 mt-3 mb-5" %>
       </div>

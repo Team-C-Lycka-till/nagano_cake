@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+nav li {
+ margin-right: 10px; 
+}
+
+.link {
+    text-decoration: none;
+    color: #FFB3CB; 
+}
+
+.bg-img{
+  background-image: url('fruits.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  height: 400px;
+  width: 100%;
+}
+
+.item_name{
+  overflow: hidden;
+  white-space: nowrap;
