@@ -22,18 +22,18 @@ class Public::OrdersController < ApplicationController
         render :new
       else
         selected = Address.find(params[:order][:address_id])
-        @order.post_code = selected.post_code
+        @order.postal_code = selected.postal_code
         @order.address = selected.address
         @order.name = selected.name
       end
 
     elsif params[:order][:address_option] == '2'
-      if params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+      if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
         @addresses = current_customer.addresses
         flash.now[:alert] = '住所を入力してください。'
         render :new
       else
-        @order.post_code = params[:order][:post_code]
+        @order.postal_code = params[:order][:postal_code]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
       end
