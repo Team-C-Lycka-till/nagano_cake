@@ -12,20 +12,20 @@ ja:
         preparing_for_shipping: "発送準備中"
         shipped: "発送済"
         
-        order_detail:
-          making_status:
-          unable_manufacture: "製作不可"
-          waiting_for_manufacture: "製作待ち"
-          in_production: "製作中"
-          production_completed: "製作完了"
-        
-        activerecord:
-          errors:
-            messages:
-              record_invalid: "バリデーションに失敗: %{errors}"
-            restrict_dependent_destroy:
-              has_one: "%{record}が存在しているので削除できません。"
-              has_many: "%{record}が存在しているので削除できません。"
+    order_detail:
+      making_status:
+        unable_manufacture: "製作不可"
+        waiting_for_manufacture: "製作待ち"
+        in_production: "製作中"
+        production_completed: "製作完了"
+      
+      activerecord:
+        errors:
+          messages:
+            record_invalid: "バリデーションに失敗: %{errors}"
+          restrict_dependent_destroy:
+            has_one: "%{record}が存在しているので削除できません。"
+            has_many: "%{record}が存在しているので削除できません。"
       date:
         abbr_day_names:
           - 日
