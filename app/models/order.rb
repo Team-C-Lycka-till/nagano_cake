@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   enum status: { waiting_for_payment: 0, comfirmed_payment: 1, in_production: 2, preparing_for_shipping: 3, shipped: 4 }
 
   validates :customer_id, presence: true
-  validates :post_code, presence: true
+  validates :postal_code, presence: true
   validates :address, presence: true
   validates :name, presence: true
   validates :shipping_cost, presence: true

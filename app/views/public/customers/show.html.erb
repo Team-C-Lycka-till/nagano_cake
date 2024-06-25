@@ -9,7 +9,7 @@
       <h4>登録情報</h4>
     </div>
     <div class="col-sm-4 px-sm-0">
-      <%= link_to "編集する", information_edit_path, class:"btn btn-success px-4 mb-2" %>
+      <%= link_to "編集する", edit_customer_path, class:"btn btn-success px-4 mb-2" %>
     </div>
   </div>
   <div class="row">
@@ -40,5 +40,11 @@
           <td><%= @customer.email %></td>
         </tr>
       </table>
+      <div style="margin-bottom :10px;"><strong style="margin-right :25px;">発送先</strong><%= link_to '一覧を見る', addresses_path, class: 'btn btn-primary' %></div>
+      <div><storong style="margin-right :10px; font-weight: bold;">注文履歴</storong><%= link_to '一覧を見る', orders_path, class: 'btn btn-primary' %></div>
     </div>
   </div>
+  
+    
+    
+</div>

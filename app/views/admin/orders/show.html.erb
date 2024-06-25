@@ -19,7 +19,7 @@
 
           <tr>
             <td>注文日</td>
-            <td><%= @order.set_date %></td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
 
           <tr>
@@ -35,11 +35,11 @@
             <td><%= @order.payment_method %></td>
             <td></td>
           </tr>
-          <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
-            <tr>
-              <td>注文ステータス</td>
+
+          <td>注文ステータス</td>
+            <tr><%= form_with model: @order, url: admin_order_path do |f| %>
               <td>
-                <%= f.select :status,Order.statuses.keys.map %>
+                <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
                 <%= f.submit "更新", class: "btn btn-success ml-5" %>
               </td>
             </tr>
@@ -64,29 +64,21 @@
             </tr>
           </thead>
           <tbody>
-            <% @order_details.each do |item| %>
+            <% @order_details.each do |order_detail| %>
               <tr>
-                <td>
-                  <%#商品の名前 %>
-                  <%= link_to item.item.name %>
-                </td>
-                <td>
-                  <%# 単価(税込) %>
-                  <%= item.price %>円
-                </td>
-                <td>
-                  <%# 数量 %>
-                  <%= item.amount %>
-                </td>
-                <td>
-                  <%# 小計 %>
-                  <%= item.total_item%>
-                </td>
-                <%= form_with model: item, url: admin_order_detail_path(item.id), method: :patch do |f| %>
-                  <td>
-                    <%= f.select :making_status,OrderDatil.making_statuses.keys.map %>
-                    <%= f.submit "更新", class: "btn btn-success ml-3" %>
-                  </td>
+                <%#商品の名前 %>
+                <td><%= order_detail.item.name %></td>
+                <%# 単価(税込) %>
+                <td><%= order_detail.item.add_tax_price.to_s(:delimited) %>円</td>
+                <%# 数量 %>
+                <td><%= order_detail.amount %></td>
+                <%# 小計 %>
+                <td><%= order_detail.get_subtotal.to_s(:delimited) %></td>
+
+                <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
+
+                <td><%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
+                <td><%= f.submit "更新", class: "btn btn-success ml-3" %></td>
                 <% end %>
               </tr>
             <% end %>
@@ -99,7 +91,7 @@
           <table>
             <tr>
               <td>商品合計</td>
-              <td><%= @order.total_item_amount.to_s(:delimited) %>円</td>
+              <td><%= @order.get_items_total_price.to_s(:delimited) %>円</td>
             </tr>
             <tr>
               <td>送料</td>
