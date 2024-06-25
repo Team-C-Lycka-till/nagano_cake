@@ -54,7 +54,7 @@
   </div>
   <div class="row d-flex">
     <h4><strong>お届け先</strong></h4>
-    <p class="ml-3">〒<%= @order.post_code.insert(3,'-') %> <%= @order.address %><br><%= @order.name %></p>
+    <p class="ml-3">〒<%= @order.postal_code.insert(3,'-') %> <%= @order.address %><br><%= @order.name %></p>
  </div>
 
 
